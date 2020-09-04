@@ -1,0 +1,171 @@
+<!DOCTYPE HTML>
+<html  ng-app="usrApp"  class="no-js">
+<head>
+<title>Spring Boot Thymeleaf User Details</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link rel="stylesheet" type="text/css"
+	href="css/bootstrap.min.css" />
+
+<link rel="stylesheet" type="text/css"	href="main.css" />
+
+</head>
+<body ng-controller="usrCtrl">
+	
+	<div class="container">
+		<div>
+			<h2>User Lists</h2>
+			<table class="table table-striped">
+				<tr>
+					<th>Id</th>
+					<th>Email</th>
+					<th>Name</th>
+					<th>FirstName</th>
+					<th>LastName</th>
+					<th>edit</th>
+					<th>Delete</th>
+				</tr>
+				<!-- <tr th:each="user : ${users}">
+					<td th:text="${user.id}"></td>
+					<td th:text="${user.fname}"></td>
+					<td th:text="${user.lname}"></td>
+					<td><a th:href="${ '/update/' + user.id}">Edit</a> </td>
+					<td><a th:href="${ '/delete/' + user.id}">Delete</a></td>
+				</tr> -->
+				
+				
+				<tr ng-repeat="usrdata in usrId">
+				<td >{{usrdata.id}}</td>
+				<td >{{usrdata.email}}</td>
+				<td >{{usrdata.name}}</td>
+				<td>{{usrdata.fname}}</td>
+				<td>{{usrdata.lname}}</td>
+				<td> <button type="button" class="btn btn-info btn-sm" data-toggle="modal" ng-click="storeid(usrdata.id)" data-target="#myModal">Edit &nbsp; &nbsp;<span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></td>
+				<td> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+				</tr>
+			</table>
+		</div>
+		<div>
+		        <button type="button" class="btn btn-primary"
+									ng-click="userdetails()">Get Users</button>
+				 <button type="button" class="btn btn-primary"
+									ng-click="saveuserdetails()" data-toggle="modal" data-target="#mySaveModal">Add Users</button>
+		</div>
+		
+	</div>
+	
+	
+	<div>
+	
+	<!-- Modal edit -->
+
+<div id="mySaveModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add User</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+		  <form>
+		  <div class="form-group">
+		      <label for="id">Id:</label>
+		      <input type="text" class="form-control" id="id">
+		    </div>
+		    <div class="form-group">
+		      <label for="email">Email:</label>
+		      <input type="text" class="form-control" id="email">
+		    </div>
+		    <div class="form-group">
+		      <label for="usr">FirstName:</label>
+		      <input type="text" class="form-control" id="fname">
+		    </div>
+		    <div class="form-group">
+		      <label for="pwd">LastName:</label>
+		      <input type="text" class="form-control" id="lname">
+		    </div>
+		  </form>
+		</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary"
+									ng-click="saveuserdetails()">Add</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+	</div>
+
+
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Edit User</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+		  <form>
+		    <div class="form-group">
+		      <label for="usr">FirstName:</label>
+		      <input type="text" class="form-control" id="fname">
+		    </div>
+		    <div class="form-group">
+		      <label for="pwd">LastName:</label>
+		      <input type="text" class="form-control" id="lname">
+		    </div>
+		  </form>
+		</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary"
+									ng-click="updateuser()">Add</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+	</div>
+	
+	<!-- Moda Delete -->
+	<div id="myModa2" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Delete User</h4>
+				</div>
+				<div class="modal-body">
+					<p>Some text in the modal.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- /.container -->
+<script src="js/angular.min.js"></script>
+ <script src="js/angular-route.min.js"></script>
+ <script src="js/angular-resource.min.js"></script> 
+ <script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+
+
+<script src="js/app.js"></script>	
+</body>
+ 
+</html>
